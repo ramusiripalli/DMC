@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="@Url.Content("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href='@Url.Action("Roles", "RoleSelection")'>Diagnostic Medical Center</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href='@Url.Action("Roles", "RoleSelection")'>Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href='@Url.Action("Login", "AdminLogin")'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href='@Url.Action("AdminRegistrationForm", "AdminRegistration")'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Doctor<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href='@Url.Action("Login", "DoctorLogin")'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href='@Url.Action("DoctorRegistrationForm", "DoctorRegistration")'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Patient<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href='@Url.Action("Login", "PatientLogin")'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href='@Url.Action("PatientRegistrationForm", "PatientRegistration")'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Agent<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href='@Url.Action("Login", "AgentLogin")'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href='@Url.Action("AgentRegistrationForm", "AgentRegistration")'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+                    </ul>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+               
+                <li><a href='@Url.Action("Roles", "RoleSelection")'><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="container body-content ">
+        @RenderBody()
+        <hr />
+    </div>
+    @Html.Partial("_Footer")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

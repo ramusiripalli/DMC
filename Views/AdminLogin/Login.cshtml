@@ -1,0 +1,38 @@
+﻿
+@model DiagnosticMedicalCenter.Models.Admin
+
+@{
+    ViewBag.Title = "Login";
+}
+<html>
+<head>
+    @Styles.Render("~/Content/StyleSheet.css")
+</head>
+<body style="background-color:darkgray">
+
+    <div class="center">
+        <h2 style="margin-top:80px;color:white;">Admin Login</h2>
+        @using (Html.BeginForm("Login", "AdminLogin", FormMethod.Post))
+        {
+            <div style="margin-top:20px;">
+                <div class="form-group">
+                    @Html.Label("User Id")
+                    @Html.TextBox("UserId", null, new { @class = "form-control", id = "userId" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Password")
+                    @Html.Password("Password", null, new { @class = "form-control", id = "password" })
+                </div>
+                <div style="margin-bottom:30px;margin-top:20px;">
+                    <button class="btn btn-success" type="submit" id="Submit">Submit</button>
+                    <button class="btn btn-success" type="reset" id="Submit">Reset</button>
+                </div>
+
+
+
+            </div>
+        }
+    </div>
+    <h4 class="text-danger">@ViewBag.ValidationMessage</h4>
+</body>
+</html>

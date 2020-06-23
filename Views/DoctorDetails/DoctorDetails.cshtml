@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "DoctorDetails";
+}
+    <div>
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("AdminHomePage","AdminLogin")'">Back</button>
+    </div>
+@using (Html.BeginForm())
+{
+    <table class="table" style="margin-top:80px;">
+        <thead>
+            <tr>
+                <th>DoctorId</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Contact Number</th>
+                <th>Status</th>
+                <th>Accept</th>
+                <th>Reject</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.DoctorId</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Age</td>
+                    <td>@item.Gender</td>
+                    <td>@item.ContactNumber</td>
+                    <td>@item.Status</td>
+                    <td>@Html.ActionLink("Accept", "AcceptDoctor", "DoctorDetails", new { id = item.DoctorId }, null)</td>
+                    <td>@Html.ActionLink("Reject", "RejectDoctor", "DoctorDetails", new { id = item.DoctorId }, null)</td>
+                </tr>
+            </tbody>
+        }
+
+    </table>
+}

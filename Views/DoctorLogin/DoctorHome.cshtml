@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "DoctorHome";
+}
+
+<h2>Welcome Doctor</h2>
+@using (Html.BeginForm())
+{
+    if (Session["UserId"] != null)
+    {
+        <h3>@ViewBag.ValidationMessage</h3>
+        Session.Remove("UserId");
+        Session.Remove("Password");
+    }
+
+    <div class="btn-group btn-group-justified">
+        <a href='@Url.Action("MedicareServicesForm", "MedicareServices")' class="btn btn-primary">Create Medicare Services</a>
+    </div>
+}

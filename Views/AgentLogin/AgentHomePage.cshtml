@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "AgentHomePage";
+}
+
+<h2>Welcome Agent</h2>
+@using (Html.BeginForm())
+{
+    if (Session["UserId"] != null)
+    {
+        <h3>@ViewBag.ValidationMessage</h3>
+        Session.Remove("UserId");
+        Session.Remove("Password");
+    }
+}

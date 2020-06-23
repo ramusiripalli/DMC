@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "AdminHomePage";
+}
+<html>
+<head>
+    @Styles.Render("~/Content/StyleSheet.css")
+</head>
+<body>
+
+
+    <h2 style="color:rebeccapurple;">Welcome Admin</h2>
+    @using (Html.BeginForm())
+    {
+        if (Session["UserId"] != null)
+        {
+            <h3>@ViewBag.ValidationMessage</h3>
+            Session.Remove("UserId");
+            Session.Remove("Password");
+        }
+    }
+    
+    <div class="list-group">
+        <a href='@Url.Action("AgentRegistrationForm", "AgentRegistration")' class="list-group-item">Create Agent</a>
+        <a href='@Url.Action("PatientDetails", "PatientDetails")' class="list-group-item">Patient Details</a>
+        <a href='@Url.Action("DoctorDetails", "DoctorDetails")' class="list-group-item">Doctor Details</a>
+        <a href='@Url.Action("AgentDetails", "AgentDetails")' class="list-group-item">Agent Details</a>
+    </div>
+</body>
+</html>
