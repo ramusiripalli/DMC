@@ -1,0 +1,50 @@
+Listing Clickable Ids in View
+****
+@{
+    ViewBag.Title = "ListMedicareServices";
+}
+<button class="btn btn-primary btn-danger" style="margin-top:60px;margin-left:95%;margin-bottom:0px;" onclick="location.href='@Url.Action("PatientHome", "PatientLogin")'">Back</button>
+@using (Html.BeginForm())
+{
+    <table style="margin-top:10px;">
+        <thead>
+            <tr>
+                <th><h2 class="text-danger">List of Medicare Services</h2></th>
+            </tr>
+        </thead>
+        @{
+            foreach (var item in Model)
+            {
+
+                string id = item.MedicareServiceIdentity;
+                <tbody>
+                    <tr>
+                        <td><h3>@Html.ActionLink(id, "ListMedicareServices", "PatientLogin", new { serviceId = item.MedicareServiceIdentity }, null)</h3></td>
+                    </tr>
+                </tbody>
+            }
+        }
+    </table><br /><br />
+    <h4 class="text-danger">*Please click on the Medicare Service Id for more information.</h4>
+}
+
+Controller
+**
+public ActionResult ListMedicareServiceIds()
+        {
+            List<MedicareService> serviceIdList = (from services in viewDetailsContext.
+				MedicareServices select services).ToList();
+            return View(serviceIdList);
+        }
+
+public ActionResult ListMedicareServices(int serviceId)
+        {
+
+            string medicareId = serviceId.ToString();
+            var serviceDetails = viewDetailsContext.MedicareServices.Find(medicareId);
+            ViewBag.MedicareServiceId = serviceDetails.MedicareServiceIdentity;
+            ViewBag.DoctorId = serviceDetails.DoctorIdentity;
+            ViewBag.MedicareServiceName = serviceDetails.MedicareServiceName;
+            ViewBag.Eligibility = serviceDetails.Eligibility;
+            return View();
+        }
